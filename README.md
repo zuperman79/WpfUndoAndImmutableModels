@@ -1,6 +1,6 @@
-# Implement Undo functionality in WPF MVVM using immutable models (C#7)
+# Implement Undo functionality in WPF MVVM using immutable models
 
-An example project that leverages model immutability in order to achieve Undo functionality.
+An example project that leverages model immutability in order to achieve Undo functionality (C# 7).
 
 The goal is to upgrate to C# 9 and use record types as models, and source generators in order to maximize productivity.
 
@@ -64,3 +64,17 @@ public override void RestorePreviousState(string propertyName, object oldState, 
     RaisePropertyChanged(propertyName);
 }
 ```
+
+In this scenario, features announced in C# 9 will be handy:
+
+1. private setters on the model's properties are used in order to be able to create copies of the model using reflection. This is where the record types of C# 9 and the `with` keyword would be useful.
+2. the replication of properties on the view model could be done by source generators.
+
+## More:
+
+The undo functionality is implemented also in view models that do not have a backing immutable model (like the MainViewModel) and keeps track of property changes. Each undoable property change needs to be stated, see the `Dictionary<string, Action<object>> undoableActions`. 
+One of the properties of the main view model where undo is implemented is the list of persons: `ImmutableList<PresonViewModel> Persons`. Using an immutable list is an elegant way of keeping track of collection changes that eliminates all the messy code associated with implementing a handler for the `OnCollectionChanged` event.
+
+## Contributing
+
+Just make pull request. You are in!
