@@ -9,7 +9,7 @@ The goal is to upgrate to C# 9 and use record types as models, and source genera
 Let's consider a model/view model pair, with the model immutable and the view model exposing the model properties for binding.
 
 ### The model:
-```
+```c#
 public class Person : IStateObject
 {
     public string FirstName { get; private set; }
