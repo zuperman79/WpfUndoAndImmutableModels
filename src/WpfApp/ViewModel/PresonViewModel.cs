@@ -4,7 +4,7 @@ using WpfApp.Model;
 
 namespace WpfApp.ViewModel
 {
-    public class UserViewModel : BaseViewModel, IStateObject
+    public class PresonViewModel : BaseViewModel, IStateObject
     {
         private Person modelObject;
 
@@ -35,7 +35,7 @@ namespace WpfApp.ViewModel
         public Func<IStateObject, string, object, IStateObject> CreateCopy => 
             throw new NotImplementedException();
 
-        public UserViewModel(Person user)
+        public PresonViewModel(Person user)
         {
             this.modelObject = user;
         }

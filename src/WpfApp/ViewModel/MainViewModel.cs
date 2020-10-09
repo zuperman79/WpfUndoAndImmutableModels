@@ -9,25 +9,25 @@ namespace WpfApp.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        private UserViewModel selectedUser;
+        private PresonViewModel selectedPerson;
         private RelayCommand addUserCommand;
-        private ImmutableList<UserViewModel> users = ImmutableList.Create(
-            new UserViewModel(new Person("gogu", "fanel", DateTime.Now, null)),
-            new UserViewModel(new Person("gigi", "ninel", DateTime.Now, null)));
+        private ImmutableList<PresonViewModel> persons = ImmutableList.Create(
+            new PresonViewModel(new Person("Jean-Luc", "Picard", DateTime.Now, null)),
+            new PresonViewModel(new Person("Luke", "Skywalker", DateTime.Now, null)));
 
-        public UserViewModel SelectedUser 
+        public PresonViewModel SelectedPerson 
         {
-            get => selectedUser; 
-            set => SetProperty(ref selectedUser, () => selectedUser = value);
+            get => selectedPerson; 
+            set => SetProperty(ref selectedPerson, () => selectedPerson = value);
         }
 
         public ImmutableList<Country> Countries { get; }
             = ImmutableList.Create(new Country("ro", 1), new Country("en", 2));
 
-        public ImmutableList<UserViewModel> Users 
+        public ImmutableList<PresonViewModel> Persons 
         {
-            get => users;
-            set => SetProperty(ref users, () => users = value);
+            get => persons;
+            set => SetProperty(ref persons, () => persons = value);
         }
 
         public RelayCommand AddUserCommand => 
@@ -35,7 +35,7 @@ namespace WpfApp.ViewModel
 
         private void AddUser() 
         {
-             Users = users.Add(new UserViewModel(new Person("x", "x", DateTime.Now, Countries.First())));
+             Persons = persons.Add(new PresonViewModel(new Person("William", "Adama", DateTime.Now, Countries.First())));
         }
 
         public MainViewModel()
@@ -49,8 +49,8 @@ namespace WpfApp.ViewModel
         private void InitializeUndoActions()
         {
             undoableActions = new Dictionary<string, Action<object>>() {
-                { nameof(SelectedUser), previousState => selectedUser = previousState as UserViewModel },
-                { nameof(Users), previousState => users = previousState as ImmutableList<UserViewModel> }
+                { nameof(SelectedPerson), previousState => selectedPerson = previousState as PresonViewModel },
+                { nameof(Persons), previousState => persons = previousState as ImmutableList<PresonViewModel> }
             };
         }
 

@@ -89,10 +89,11 @@
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\IStateful.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Model\IStateObject.cs" />
     <Compile Include="Services\UndoService.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\UserViewModel.cs" />
+    <Compile Include="ViewModel\PresonViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
