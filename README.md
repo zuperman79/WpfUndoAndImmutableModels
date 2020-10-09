@@ -19,7 +19,7 @@ public class Person : IStateObject
 The model is reather straightforward, note the ugly private setter needed for property initialization.
 
 ### The view model:
-```
+```c#
 public class PresonViewModel : BaseViewModel, IStateObject
 {
   private Person modelObject;
@@ -47,7 +47,7 @@ Here, the view model replicates the model properties (blah) and adds some functi
 
 Whenever an undo is necessary, the previous state is popped from the stack of changes and the 'RestorePreviousState' is called on the view model:
 
-```
+```c#
 public void Undo() 
 {
     var undoData = UndoService.GetWindowPreviousState;
@@ -57,7 +57,7 @@ public void Undo()
 
 And in the view model:
 
-```
+```c#
 public override void RestorePreviousState(string propertyName, object oldState, object newState)
 {
     modelObject = oldState as Person;
