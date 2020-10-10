@@ -27,9 +27,9 @@ public class PresonViewModel : BaseViewModel, IStateObject
   public string FirstName 
   { 
       get => modelObject.FirstName; 
-      set => SetProperty(ref modelObject, CreateAction(value) ); 
+      set => SetProperty(ref modelObject, CreateModelCopyAction(value) ); 
   }
-  private Action CreateAction(object value, [CallerMemberName] string propertyName = null)
+  private Action CreateModelCopyAction(object value, [CallerMemberName] string propertyName = null)
   {
       return () => modelObject = modelObject.CreateCopy(modelObject, propertyName, value) as Person;
   }
