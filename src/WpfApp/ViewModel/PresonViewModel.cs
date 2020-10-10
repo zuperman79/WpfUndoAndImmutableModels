@@ -11,25 +11,25 @@ namespace WpfApp.ViewModel
         public string FirstName 
         { 
             get => modelObject.FirstName; 
-            set => SetProperty(ref modelObject, CreateAction(value) ); 
+            set => SetProperty(ref modelObject, CreateModelCopyAction(value) ); 
         }
 
         public string LastName 
         {
             get => modelObject.LastName;
-            set => SetProperty(ref modelObject, CreateAction(value));
+            set => SetProperty(ref modelObject, CreateModelCopyAction(value));
         }
 
         public DateTime DateOfBirth 
         {
             get => modelObject.DateOfBirth;
-            set => SetProperty(ref modelObject, CreateAction(value));
+            set => SetProperty(ref modelObject, CreateModelCopyAction(value));
         }
 
         public Country Country 
         {
             get => modelObject.Country;
-            set => SetProperty(ref modelObject, CreateAction(value));
+            set => SetProperty(ref modelObject, CreateModelCopyAction(value));
         }
 
         public Func<IStateObject, string, object, IStateObject> CreateCopy => 
@@ -40,7 +40,7 @@ namespace WpfApp.ViewModel
             this.modelObject = user;
         }
 
-        private Action CreateAction(object value, [CallerMemberName] string propertyName = null)
+        private Action CreateModelCopyAction(object value, [CallerMemberName] string propertyName = null)
         {
             return () => modelObject = modelObject.CreateCopy(modelObject, propertyName, value) as Person;
         }
