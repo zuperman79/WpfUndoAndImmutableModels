@@ -75,6 +75,4 @@ In this scenario, features announced in C# 9 will be handy:
 The undo functionality is implemented also in view models that do not have a backing immutable model (like the MainViewModel) and keeps track of property changes. Each undoable property change needs to be stated, see the `Dictionary<string, Action<object>> undoableActions`. 
 One of the properties of the main view model where undo is implemented is the list of persons: `ImmutableList<PresonViewModel> Persons`. Using an immutable list is an elegant way of keeping track of collection changes that eliminates all the messy code associated with implementing a handler for the `OnCollectionChanged` event.
 
-## Contributing
 
-Just make pull request. You are in!
