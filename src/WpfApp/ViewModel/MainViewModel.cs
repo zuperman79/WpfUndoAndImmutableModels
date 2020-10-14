@@ -9,13 +9,13 @@ namespace WpfApp.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        private PresonViewModel selectedPerson;
+        private PersonViewModel selectedPerson;
         private RelayCommand addUserCommand;
-        private ImmutableList<PresonViewModel> persons = ImmutableList.Create(
-            new PresonViewModel(new Person("Jean-Luc", "Picard", DateTime.Now, null)),
-            new PresonViewModel(new Person("Luke", "Skywalker", DateTime.Now, null)));
+        private ImmutableList<PersonViewModel> persons = ImmutableList.Create(
+            new PersonViewModel(new Person("Jean-Luc", "Picard", DateTime.Now, null)),
+            new PersonViewModel(new Person("Luke", "Skywalker", DateTime.Now, null)));
 
-        public PresonViewModel SelectedPerson 
+        public PersonViewModel SelectedPerson 
         {
             get => selectedPerson; 
             set => SetProperty(ref selectedPerson, () => selectedPerson = value);
@@ -24,7 +24,7 @@ namespace WpfApp.ViewModel
         public ImmutableList<Country> Countries { get; }
             = ImmutableList.Create(new Country("ro", 1), new Country("en", 2));
 
-        public ImmutableList<PresonViewModel> Persons 
+        public ImmutableList<PersonViewModel> Persons 
         {
             get => persons;
             set => SetProperty(ref persons, () => persons = value);
@@ -35,7 +35,7 @@ namespace WpfApp.ViewModel
 
         private void AddUser() 
         {
-             Persons = persons.Add(new PresonViewModel(new Person("William", "Adama", DateTime.Now, Countries.First())));
+             Persons = persons.Add(new PersonViewModel(new Person("William", "Adama", DateTime.Now, Countries.First())));
         }
 
         public MainViewModel()
@@ -49,8 +49,8 @@ namespace WpfApp.ViewModel
         private void InitializeUndoActions()
         {
             undoableActions = new Dictionary<string, Action<object>>() {
-                { nameof(SelectedPerson), previousState => selectedPerson = previousState as PresonViewModel },
-                { nameof(Persons), previousState => persons = previousState as ImmutableList<PresonViewModel> }
+                { nameof(SelectedPerson), previousState => selectedPerson = previousState as PersonViewModel },
+                { nameof(Persons), previousState => persons = previousState as ImmutableList<PersonViewModel> }
             };
         }
 
