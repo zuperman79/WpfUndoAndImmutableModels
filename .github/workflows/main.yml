@@ -14,4 +14,4 @@ jobs:
 
     - name: MSBuild
       working-directory: src/WpfApp
-      run: msbuild src/WpfApp/WpfApp.csproj
+      run: msbuild WpfApp.csproj
